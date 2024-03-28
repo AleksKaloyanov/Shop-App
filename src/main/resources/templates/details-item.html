@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons::nav}">
+</header>
+<main>
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Details</span></h1>
+    <hr class="my-3"/>
+    <div class="container-fluid bg-dark w-25 m-auto ">
+        <div class="row justify-content-center ">
+            <div class="card" style="width: 18rem;" th:object="${itemViewModel}">
+                <img class="card-img-top"
+                     th:src="'/img/'+*{getGender().name()}+'-'+*{getCategory().getName().name()}+'.jpg'"
+                     alt="Card image cap">
+                <div class="card-body bg-gray align-content-center text-center">
+                    <h6 th:text="*{getName()}">Item name</h6>
+                    <p class="card-text" th:text="*{getDescription()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi enim,
+                        excepturi ha </p>
+                    <p></p>
+                    <h6 th:text="*{getPrice()}">Price</h6>
+                    <a th:href="@{/items/delete/{id}(id=*{id})}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/commons::footer}">
+</footer>
+</body>
+</html>
